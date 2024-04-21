@@ -1,2 +1,2 @@
-# Curso_Backend_Chaves-Nicolas-Gabriel
+# Backend-Chaves-Nicolas-Gabriel
 repo para el curso de backend en coderhouse
