@@ -1,8 +1,8 @@
 import { Router } from 'express';
 import { productModel } from '../models/productos.model.js';
-import express from 'express'
 
 const router = Router();
+
 
 router.get('/', async (req, res) => {
     let { price, limit } = req.query;
@@ -15,8 +15,9 @@ router.get('/', async (req, res) => {
             { $limit: limit },
             { $sort: { price: price } }
         ]);
-        res.render('products',{products})
-        //res.send({ result: 'success', payload: products });
+        //const user = res.session.user;
+        res.render('products',{products,user: req.session.user})
+
     } catch (error) {
         console.log("No se pudo conectar a mongoose: " + error);
     }

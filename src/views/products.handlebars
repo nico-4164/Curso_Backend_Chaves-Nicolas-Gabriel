@@ -1,5 +1,9 @@
 <body class="products">
   <h1 class="products">Lista de productos</h1>
+      <p>Bienvenido, {{user.username}} ({{user.role}})!</p>
+      <form action="/api/login" method="get">
+          <button type="submit">Logout</button>
+      </form>
   <ul class="products">
     {{#each products}}
       <li class="products">
