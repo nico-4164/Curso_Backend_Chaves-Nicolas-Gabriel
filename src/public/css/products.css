@@ -1,50 +1,51 @@
-.products body {
+body.products {
   font-family: Arial, sans-serif;
-  background-color: #f5f5f5;
+  background-color: #f4f4f9;
   margin: 0;
   padding: 20px;
 }
 
-.products h1 {
+h1.products {
+  text-align: center;
   color: #333;
+  margin-bottom: 20px;
 }
 
-.products ul {
+ul.products {
   list-style-type: none;
   padding: 0;
 }
 
-.products li {
+ul.products li.products {
   background-color: #fff;
-  border-radius: 4px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border: 1px solid #ddd;
+  border-radius: 8px;
   margin-bottom: 20px;
   padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.products h2 {
-  color: #333;
-  font-size: 24px;
-  margin: 0 0 10px;
+ul.products li.products h2.products {
+  margin-top: 0;
+  color: #007bff;
 }
 
-.products p {
+ul.products li.products p.products {
+  margin: 5px 0;
   color: #666;
-  margin: 0;
 }
 
-.products p:first-child {
+ul.products li.products button.addToCart {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
   margin-top: 10px;
 }
 
-.products p:last-child {
-  margin-bottom: 10px;
-}
-
-.products p::before {
-  font-weight: bold;
-}
-
-.products li:nth-child(even) {
-  background-color: #f9f9f9;
+ul.products li.products button.addToCart:hover {
+  background-color: #0056b3;
 }

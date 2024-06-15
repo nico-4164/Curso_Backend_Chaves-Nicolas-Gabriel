@@ -1,6 +1,8 @@
 import express from 'express';
 import handlebars from 'express-handlebars';
 import session from 'express-session';
+import path from 'path';
+import { fileURLToPath } from 'url';
 
 import carritoRouter from './routes/carrito.router.js';
 import realTimeProducts from './routes/realTimeProducts.router.js';
@@ -16,9 +18,11 @@ import { Server } from 'socket.io';
 
 // Init Servers
 const app = express()
-const httpServer = app.listen(8080, () => console.log("Servidor arriba en el puerto 8080..."))
+const httpServer = app.listen(8080  , () => console.log("Servidor arriba en el puerto 8080..."))
 const io = new Server(httpServer)
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 mongoose.connect('mongodb+srv://nicolaschaves1991:iYm9g3zcwk40HyyF@coderhousebackend.uunghaj.mongodb.net/?retryWrites=true&w=majority').then(() => {
   // Conexión exitosa
@@ -43,11 +47,14 @@ app.use(session({
 
 // Config engine templates
 app.engine('handlebars', handlebars.engine());
-app.set('views','../src/views');
+app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'handlebars');
 app.use(express.static('./src/public'));
 app.use(express.json());
 app.use('/static', express.static('public'));
+
+// Serve static files
+app.use('/public', express.static(path.join(__dirname, 'public')));
 
 app.use('/realtimeproducts', realTimeProducts)
 app.use('/api/productos', productosRouter);
