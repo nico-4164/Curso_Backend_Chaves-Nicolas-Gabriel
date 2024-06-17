@@ -4,17 +4,22 @@ import session from 'express-session';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
+//Rutas
 import carritoRouter from './routes/carrito.router.js';
 import realTimeProducts from './routes/realTimeProducts.router.js';
 import productosRouter from './routes/productos.router.js';
 import userRouter from './routes/user.router.js';
 import loginRouter from './routes/login.router.js';
 import logoutRouter from './routes/logout.router.js'; 
+import registerRouter from './routes/register.router.js';
 
+//Servers y DDBB
 import mongoose from 'mongoose';
 import MongoStore from 'connect-mongo';
 import { productModel } from '../src/models/productos.model.js';
 import { Server } from 'socket.io';
+import passport from 'passport';
+import './config/passport.config.js'
 
 // Init Servers
 const app = express()
@@ -45,6 +50,10 @@ app.use(session({
   saveUninitialized: true
 }));
 
+//Configuracion de passport
+app.use(passport.initialize())
+app.use(passport.session())
+
 // Config engine templates
 app.engine('handlebars', handlebars.engine());
 app.set('views', path.join(__dirname, 'views'));
@@ -55,13 +64,13 @@ app.use('/static', express.static('public'));
 
 // Serve static files
 app.use('/public', express.static(path.join(__dirname, 'public')));
-
 app.use('/realtimeproducts', realTimeProducts)
 app.use('/api/productos', productosRouter);
 app.use('/api/carts', carritoRouter);
 app.use('/api/users',userRouter);
 app.use('/api/login',loginRouter);
 app.use('/api/logout', logoutRouter);
+app.use('/api/register', registerRouter);
 
 const messages = []
 

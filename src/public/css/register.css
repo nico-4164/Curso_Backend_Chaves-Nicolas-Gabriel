@@ -1,4 +1,4 @@
-.login {
+.register {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
     display: flex;
@@ -8,12 +8,12 @@
     margin: 0;
 }
 
-.login h1 {
+h1 {
     text-align: center;
     color: #333;
 }
 
-.login form {
+form {
     background-color: #fff;
     padding: 20px;
     border-radius: 5px;
@@ -21,20 +21,20 @@
     width: 300px;
 }
 
-.login form div {
+form div {
     margin-bottom: 15px;
 }
 
-.login label {
+label {
     display: block;
     margin-bottom: 5px;
     color: #555;
 }
 
-.login input[type="email"],
-.login input[type="password"],
-.login input[type="text"],
-.login button {
+.register input[type="text"],
+.register input[type="email"],
+.register input[type="password"],
+.register button {
     width: calc(100% - 20px);
     padding: 10px;
     margin: 5px 0;
@@ -43,27 +43,27 @@
     border: 1px solid #ccc;
 }
 
-.login button {
-    background-color: #28a745;
+.register button {
+    background-color: #007bff;
     color: #fff;
     border: none;
     cursor: pointer;
     transition: background-color 0.3s;
 }
 
-.login button:hover {
-    background-color: #218838;
+.register button:hover {
+    background-color: #0056b3;
 }
 
-.login div p {
+.register div p {
     text-align: center;
 }
 
-.login div p a {
-    color: #007bff;
+.register div p a {
+    color: #28a745;
     text-decoration: none;
 }
 
-.login div p a:hover {
+.register div p a:hover {
     text-decoration: underline;
 }
