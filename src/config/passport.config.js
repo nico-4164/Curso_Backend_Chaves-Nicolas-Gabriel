@@ -23,11 +23,35 @@ passport.use(new LocalStrategy(
   }
 ));
 
-// Estrategia de GitHub
+passport.use(new GoogleStrategy({
+    clientID: '31642225161-cq67nnqdkegl86ph40ppjtmj3ubgfab3.apps.googleusercontent.com',
+    clientSecret: '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',
+    callbackURL: "http://localhost:8080/api/sesion/login"
+  },
+  async (accessToken, refreshToken, profile, done) => {
+    try {
+      let user = await userModel.findOne({ googleId: profile.id });
+      if (!user) {
+        user = await userModel.create({
+          googleId: profile.id,
+          username: profile.displayName,
+          email: profile.emails[0].value,
+          role: 'usuario'
+        });
+      }
+      done(null, user);
+    } catch (err) {
+      done(err, null);
+    }
+  }
+));
+
+
+// Estrategia de GitHub - Falta terminar
 passport.use(new GitHubStrategy({
-  clientID: 'GITHUB_CLIENT_ID',
-  clientSecret: 'GITHUB_CLIENT_SECRET',
-  callbackURL: 'http://localhost:8080/api/login/github/callback'
+  clientID: '',
+  clientSecret: '',
+  callbackURL: 'http://localhost:8080/api/login/github'
 },
 async (accessToken, refreshToken, profile, done) => {
   try {

@@ -1,25 +1,29 @@
-<body class="login">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/login.css">
+    <title>Login</title>
+</head>
+<body>
     <h1>Login</h1>
-    {{#if error}}
-            <p class="error">{{error}}</p>
-        {{/if}}
-    <form action="" method="post">
+    <form action="/api/login" method="post">
         <div>
-            <label for="username">Email</label>
-            <input type="email" name="username" id="username" required>
+            <label for="username">Email:</label>
+            <input type="email" id="username" name="username" required>
         </div>
         <div>
-            <label for="password">Password</label>
-            <input type="password" name="password" id="password" required>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
         </div>
         <button type="submit">Login</button>
     </form>
-    
+    <p>No tienes una cuenta? <a href="/api/register">Regístrate aquí</a></p>
+    <p>O inicia sesión con:</p>
     <div>
-        <p>¿No tienes una cuenta? <a href="/api/register">Regístrate aquí</a></p>
-        <p>O autenticarse con:</p>
-        <a href="/api/login/github">
-            <button>Login con GitHub</button>
-        </a>
+        <a href="/api/github"><button>Login con GitHub</button></a>
+        <a href="/api/sesion"><button>Login con Google</button></a>
     </div>
 </body>
+</html>
